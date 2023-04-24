@@ -1,0 +1,10 @@
+#environment
+.env*
+
+#firebase
+
+#system
+node_modules
+
+#dist
+dist
