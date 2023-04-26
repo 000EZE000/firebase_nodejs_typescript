@@ -2,7 +2,7 @@ PUT http://localhost:3050/user/update
 Content-Type:application/json
 
 {
-"id":"97ee4f69-eb7e-4463-b687-25423a36e62c",
+"id":"00c44ee0-15ce-4455-95b3-9d51e27218e4",
 "firstName":"ignacio",
 "lastName":"sosa",
 "phone":2222222222222

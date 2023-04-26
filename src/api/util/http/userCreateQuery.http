@@ -1,10 +1,10 @@
-POST {{HOST}}user/create
+POST {{HOST}}user/signUp
 Content-Type:application/json
 
 {
 "firstName":"ignacio",
 "lastName":"sosa",
-"email":"ezsequiel@mail.com",
+"email":"ignacio@mail.com",
 "password":"password",
 "phone":2111111111111
 } 

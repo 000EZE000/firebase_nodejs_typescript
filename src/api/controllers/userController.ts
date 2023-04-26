@@ -5,16 +5,15 @@ import { STATUS } from "../util/statusResponse";
 
 const router = Router();
 
-router.post("/create", async ({ body }: Request, res: Response) => {
+router.post("/signUp", async ({ body }: Request, res: Response) => {
   try {
-    const responseService = await UserService.createUser(body);
+    const { failed, content } = await UserService.createUser(body);
 
-    if (responseService.failed)
-      return res.status(STATUS.BAD_REQUEST).json(responseService);
+    const returnStatus = failed ? STATUS.BAD_REQUEST : STATUS.CREATE;
 
-    return res.status(STATUS.CREATE).json(responseService);
+    return res.status(returnStatus).json({ content });
   } catch (error: any) {
-    return res.status(STATUS.ERROR_SERVER).send({ content: error.message });
+    return res.status(STATUS.ERROR_SERVER).json({ content: error.message });
   }
 });
 
