@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import UserRepositoyIpm from "../../data/firebase/repositories/user/UserRepositoryImp";
-import HashPassword from "../../data/firebase/repositories/utils/hasPassword";
+import HashPassword from "../util/validation/hasPassword";
 import UserEntity, {
   OutEmailPasswordToUser,
   paramUserOutId,
