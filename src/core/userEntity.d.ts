@@ -1,4 +1,3 @@
-import exp from "constants";
 
 export default interface UserEntity {
   readonly id: string;
