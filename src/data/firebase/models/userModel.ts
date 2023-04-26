@@ -1,6 +1,6 @@
 import { doc, query, collection, where } from "firebase/firestore";
 import db from "../connect";
-import UserEntity from "../entities/userEntity";
+import UserEntity from "../../../core/userEntity";
 
 const NAME_USER = "user";
 const KEY_EMAIL = "email";

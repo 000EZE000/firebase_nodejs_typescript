@@ -1,12 +1,12 @@
 import { v4 as uuid } from "uuid";
 
+import UserRepositoyIpm from "../../data/firebase/repositories/user/UserRepositoryImp";
+import HashPassword from "../../data/firebase/repositories/utils/hasPassword";
 import UserEntity, {
   OutEmailPasswordToUser,
   paramUserOutId,
-} from "../../data/firebase/entities/userEntity";
-import UserRepositoyIpm from "../../data/firebase/repositories/user/UserRepositoryImp";
-import User from "../../data/firebase/entities/User";
-import HashPassword from "../../data/firebase/repositories/utils/hasPassword";
+} from "../../core/userEntity";
+import User from "../../core/User";
 
 export default class UserService {
   private static repository = new UserRepositoyIpm();

@@ -1,7 +1,9 @@
 import { deleteDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
-import UserEntity, { OutEmailPasswordToUser } from "../../entities/userEntity";
 import UserRepository from "./UserReposity";
 import UserModel from "../../models/userModel";
+import UserEntity, {
+  OutEmailPasswordToUser,
+} from "../../../../core/userEntity";
 
 export default class UserRepositoyIpm implements UserRepository {
   createUser = async (user: UserEntity) => {
