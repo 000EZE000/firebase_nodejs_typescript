@@ -1,0 +1,6 @@
+GET {{HOST}}user/find
+{{APP}}
+
+{
+"email":"ezsequie1@gmail.com"
+}

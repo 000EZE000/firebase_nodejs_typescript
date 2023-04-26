@@ -1,0 +1,11 @@
+POST {{HOST}}user/create
+Content-Type:application/json
+
+{
+"firstName":"ignacio",
+"lastName":"sosa",
+"email":"ezsequiel@mail.com",
+"password":"password",
+"phone":2111111111111
+} 
+
