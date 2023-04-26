@@ -17,19 +17,13 @@ export default class UserRepositoyIpm implements UserRepository {
     }
   };
 
-  updateUser = async ({
-    firstName,
-    lastName,
-    phone,
-    id,
-  }: OutEmailPasswordToUser) => {
+  updateUser = async (user: OutEmailPasswordToUser) => {
     try {
-      await updateDoc(UserModel.run(id), {
-        firstName,
-        lastName,
-        phone,
-      });
-      return { content: { firstName, lastName, phone } };
+      const { id, ...userWithoutId } = user;
+      await updateDoc(UserModel.run(id), userWithoutId);
+      return {
+        content: userWithoutId,
+      };
     } catch (error: any) {
       return { content: null };
     }
