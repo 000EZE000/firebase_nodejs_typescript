@@ -1,35 +1,10 @@
-import { v4 as uuid } from "uuid";
-
 import UserRepositoyIpm from "../../data/firebase/repositories/user/UserRepositoryImp";
-import HashPassword from "../util/validation/hasPassword";
 import UserEntity, {
   OutEmailPasswordToUser,
-  paramUserOutId,
 } from "../../core/userEntity";
-import User from "../../core/User";
 
 export default class UserService {
   private static repository = new UserRepositoyIpm();
-
-  public static createUser = async (user: paramUserOutId) => {
-    const isRepeatEmail = await this.findUserByEmail(user.email);
-
-    if (isRepeatEmail.content !== null)
-      return {
-        content: "the user already registered",
-        failed: true,
-      };
-
-    const userCreate = new User({ ...user, id: uuid() });
-
-    const userFinal = await HashPassword.hashPassword(
-      userCreate.getAllProperty(),
-    );
-
-    const responseRepository = await this.repository.createUser(userFinal);
-
-    return { ...responseRepository, failed: false };
-  };
 
   public static updateUser = async (user: OutEmailPasswordToUser) => {
     const responseRepository = await this.repository.updateUser(user);
