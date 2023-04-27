@@ -1,4 +1,3 @@
-
 export default interface UserEntity {
   readonly id: string;
   firstName: string;
@@ -14,7 +13,12 @@ export type resultUserOutPasswordAndId = Omit<UserEntity, "id" | "password">;
 
 export type OutEmailPasswordToUser = Omit<UserEntity, "password" | "email">;
 
-export type OutEmailPasswordIdToUser = Omit<UserEntity, "password" | "email" | "id">
+export type OutEmailPasswordIdToUser = Omit<
+  UserEntity,
+  "password" | "email" | "id"
+>;
+
+export type onlyEmailAndPassword = Pick<UserEntity, "email" | "password">;
 
 export interface useCaseUser {
   getLastName: () => UserEntity["lastName"];
