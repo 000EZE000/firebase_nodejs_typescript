@@ -20,6 +20,10 @@ export type OutEmailPasswordIdToUser = Omit<
 
 export type onlyEmailAndPassword = Pick<UserEntity, "email" | "password">;
 
+export type keysUserEntity = Array<keyof UserEntity>;
+
+export type keysUserEntity = keyof UserEntity;
+
 export interface useCaseUser {
   getLastName: () => UserEntity["lastName"];
   getFirstName: () => UserEntity["firstName"];
