@@ -1,4 +1,3 @@
-import User from "../../core/User";
 import { onlyEmailAndPassword, paramUserOutId } from "../../core/userEntity";
 import UserRepositoyIpm from "../../data/firebase/repositories/user/UserRepositoryImp";
 import TokenUtils from "../util/jwt";
@@ -11,40 +10,35 @@ export default class AuthService {
   static findByEmail = UserService.findUserByEmail;
   static checkPassword = HashPassword.comparePassword;
   static generateToken = TokenUtils.generateToken;
+  static hashPassword = HashPassword.hashPassword;
 
-  public static signUp = async (user: paramUserOutId) => {
-    const isRepeatEmail = await this.findByEmail(user.email);
-
+  public static signUp = async (body: paramUserOutId) => {
+    const isRepeatEmail = await this.findByEmail(body.email);
     if (isRepeatEmail.content !== null)
       return {
         content: "the user already registered",
         failed: true,
       };
-
-    const userCreate = new User({ ...user, id: uuid() });
-
-    const userFinal = await HashPassword.hashPassword(
-      userCreate.getAllProperty(),
-    );
-
-    const responseRepository = await this.repository.createUser(userFinal);
-
+    const user = await this.hashPassword({ ...body, id: uuid() });
+    const responseRepository = await this.repository.createUser(user);
     return { ...responseRepository, failed: false };
   };
 
   static signIn = async ({ password, email }: onlyEmailAndPassword) => {
     const userFound = await this.findByEmail(email);
-
-    if (userFound.content === null)
-      return { content: "the password or the email is wrong", failed: true };
-
-    if (!(await this.checkPassword(password, userFound.content.password)))
-      return { content: "the password or the email is wrong", failed: true };
-
+    const userIsEmpty = userFound.content === null;
+    const messageError = {
+      content: "the password or the email is wrong",
+      failed: true,
+    };
+    if (userIsEmpty) return messageError;
+    const passwordIsWrong = !(await this.checkPassword(
+      password,
+      userFound.content.password,
+    ));
+    if (passwordIsWrong) return messageError;
     const token = this.generateToken(userFound.content.id, "1d");
-
     const { password: pass, id, ...user } = userFound.content;
-
     return { content: { user, token }, failed: false };
   };
 }
