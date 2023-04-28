@@ -2,10 +2,10 @@ POST {{HOST}}auth/signUp
 Content-Type:application/json
 
 {
-"firstName":"luis",
+"firstName":"luirs",
 "lastName":"perez",
-"email":"luis@mail.com",
-"password":"password",
+"email":"manso@mail.com",
+"password":"tata123TA",
 "phone":2111111111111
 } 
 
