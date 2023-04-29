@@ -6,4 +6,8 @@ export default class TokenUtils {
   static generateToken(id: UserEntity["id"], expiresIn: string = "12d") {
     return jwt.sign({ id }, JWT_SECRET, { expiresIn });
   }
+
+  static checkToken(token: string) {
+    return jwt.verify(token, JWT_SECRET);
+  }
 }
