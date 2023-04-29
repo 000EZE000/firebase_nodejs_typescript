@@ -1,8 +1,8 @@
 PUT http://localhost:3050/user/update
 Content-Type:application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ4Y2VjNTBiLTY4ZTgtNGE4Ni05MzdkLTFmOWZhNTAzNWNkNSIsImlhdCI6MTY4MjczNDMzOCwiZXhwIjoxNjgyODIwNzM4fQ.etHhv3-HdWPQ1O_H0JEIOat-I0Opvt7YK0M9tZO-bsM
 
 {
-"id":"00c44ee0-15ce-4455-95b3-9d51e27218e4",
 "firstName":"ignacio",
 "lastName":"sosa",
 "phone":2222222222222

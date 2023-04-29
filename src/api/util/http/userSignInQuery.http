@@ -2,7 +2,7 @@ POST {{HOST}}auth/signIn
 Content-type:application/json
 
 {
-"email":"ignacio21@mail.com",
-"password":"password"
+"email":"manso@mail.com",
+"password":"tata123TA"
 }
 
