@@ -57,6 +57,11 @@ export const isBodyIncorrectSignUp = (body: any) =>
 export const isBodyIncorrectSignIn = (body: any) =>
   isNotLogin(body) || isNotEmail(body.email) || isNotPassword(body.password);
 
+export const isBodyIncorrectUpdateUser = (body: any) =>
+  isNotName(body.firstName) ||
+  isNotName(body.lastName) ||
+  isNotPhone(body.phone);
+
 export const DEBUG_SIGN_UP = (body: any) => {
   console.log(isNotUser(body));
   console.log(isNotName(body.lastName));
